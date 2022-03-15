@@ -1,0 +1,15 @@
+server:
+  port: 8182
+spring:
+  config:
+    activate:
+      on-profile: dev
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+application:
+  secrets:
+    key: SECRET_KEY
+    host: SECRET_HOST
