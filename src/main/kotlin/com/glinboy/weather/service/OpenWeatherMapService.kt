@@ -7,4 +7,5 @@ import reactor.core.publisher.Mono
 interface OpenWeatherMapService {
     fun climaticForecast30Days(parameters: MultiValueMap<String, String>): Mono<ClimaticForecast30DaysResponseDTO>
     fun historicalWeather(parameters: MultiValueMap<String, String>): Mono<HistoricalWeatherResponse>
+    fun forecast5Day3Hour(parameters: MultiValueMap<String, String>): Mono<Forecast5Day3HourResponseDTO>
 }
