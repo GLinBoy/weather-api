@@ -60,4 +60,18 @@ class OpenWeatherMapServiceImpl : OpenWeatherMapService {
             }
     }
 
+    override fun forecast5Day3Hour(parameters: MultiValueMap<String, String>): Mono<Forecast5Day3HourResponseDTO> {
+        return client
+            .get()
+            .uri {
+                it.path("/forecast").queryParams(parameters).build()
+            }
+            .headers {
+                it.set("x-rapidapi-key", key)
+                it.set("x-rapidapi-host", host)
+            }
+            .retrieve()
+            .bodyToMono(Forecast5Day3HourResponseDTO::class.java)
+    }
+
 }
