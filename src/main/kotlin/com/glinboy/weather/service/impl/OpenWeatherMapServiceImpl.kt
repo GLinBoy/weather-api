@@ -38,4 +38,26 @@ class OpenWeatherMapServiceImpl : OpenWeatherMapService {
             .bodyToMono(ClimaticForecast30DaysResponseDTO::class.java)
     }
 
+    override fun historicalWeather(parameters: MultiValueMap<String, String>): Mono<HistoricalWeatherResponse> {
+        return client
+            .get()
+            .uri {
+                it.path("/onecall/timemachine").queryParams(parameters).build()
+            }
+            .headers {
+                it.set("x-rapidapi-key", key)
+                it.set("x-rapidapi-host", host)
+            }
+            .retrieve()
+            .bodyToMono(HistoricalWeatherResponse::class.java)
+            .onErrorResume {
+                Mono.error(
+                    ResponseStatusException(
+                        HttpStatus.BAD_REQUEST,
+                        "username is required", it
+                    )
+                )
+            }
+    }
+
 }
