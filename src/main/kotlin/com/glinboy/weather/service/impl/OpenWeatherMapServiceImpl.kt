@@ -14,4 +14,28 @@ import reactor.core.publisher.Mono
 
 @Service
 class OpenWeatherMapServiceImpl : OpenWeatherMapService {
+
+    @Value("\${application.secrets.key}")
+    private val key: String? = null
+    @Value("\${application.secrets.host}")
+    private val host: String? = null
+
+    private val client: WebClient =
+        WebClient.create("https://community-open-weather-map.p.rapidapi.com")
+    val logger: Logger = LoggerFactory.getLogger(OpenWeatherMapServiceImpl::class.java)
+
+    override fun climaticForecast30Days(parameters: MultiValueMap<String, String>): Mono<ClimaticForecast30DaysResponseDTO> {
+        return client
+            .get()
+            .uri {
+                it.path("/climate/month").queryParams(parameters).build()
+            }
+            .headers {
+                it.set("x-rapidapi-key", key)
+                it.set("x-rapidapi-host", host)
+            }
+            .retrieve()
+            .bodyToMono(ClimaticForecast30DaysResponseDTO::class.java)
+    }
+
 }
