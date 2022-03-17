@@ -38,7 +38,7 @@ class OpenWeatherMapServiceImpl : OpenWeatherMapService {
             .bodyToMono(ClimaticForecast30DaysResponseDTO::class.java)
     }
 
-    override fun historicalWeather(parameters: MultiValueMap<String, String>): Mono<HistoricalWeatherResponse> {
+    override fun historicalWeather(parameters: MultiValueMap<String, String>): Mono<HistoricalWeatherResponseDTO> {
         return client
             .get()
             .uri {
@@ -49,7 +49,7 @@ class OpenWeatherMapServiceImpl : OpenWeatherMapService {
                 it.set("x-rapidapi-host", host)
             }
             .retrieve()
-            .bodyToMono(HistoricalWeatherResponse::class.java)
+            .bodyToMono(HistoricalWeatherResponseDTO::class.java)
             .onErrorResume {
                 Mono.error(
                     ResponseStatusException(
