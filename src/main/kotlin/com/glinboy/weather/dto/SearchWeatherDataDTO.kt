@@ -1,6 +1,6 @@
 package com.glinboy.weather.dto
 
-data class SearchWeatherData (
+data class SearchWeatherDataDTO (
     val id: Long,
     val name: String,
     val coord: CoordDTO,
