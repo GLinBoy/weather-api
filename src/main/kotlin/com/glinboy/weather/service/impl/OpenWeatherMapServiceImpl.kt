@@ -104,4 +104,19 @@ class OpenWeatherMapServiceImpl : OpenWeatherMapService {
             .bodyToMono(DailyForecast16DaysResponseDTO::class.java)
     }
 
+    override fun currentWeather(parameters: MultiValueMap<String, String>): Mono<CurrentWeatherResponseDTO> {
+        return client
+            .get()
+            .uri {
+                it.path("/weather")
+                    .queryParams(parameters)
+                    .build()
+            }
+            .headers {
+                it.set("x-rapidapi-key", key)
+                it.set("x-rapidapi-host", host)
+            }
+            .retrieve()
+            .bodyToMono(CurrentWeatherResponseDTO::class.java)
+    }
 }
