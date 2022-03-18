@@ -17,4 +17,6 @@ class WeatherHandler(val weatherService: OpenWeatherMapService) {
         ServerResponse.ok().body(weatherService.forecast5Day3Hour(request.queryParams()))
     fun searchWeatherHandler(request: ServerRequest): Mono<ServerResponse> =
         ServerResponse.ok().body(weatherService.searchWeather(request.queryParams()))
+    fun dailyForecast16DaysHandler(request: ServerRequest): Mono<ServerResponse> =
+        ServerResponse.ok().body(weatherService.dailyForecast16Days(request.queryParams()))
 }
