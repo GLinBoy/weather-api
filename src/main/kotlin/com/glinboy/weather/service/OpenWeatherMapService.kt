@@ -10,4 +10,5 @@ interface OpenWeatherMapService {
     fun forecast5Day3Hour(parameters: MultiValueMap<String, String>): Mono<Forecast5Day3HourResponseDTO>
     fun searchWeather(parameters: MultiValueMap<String, String>): Mono<SearchWeatherResponseDTO>
     fun dailyForecast16Days(parameters: MultiValueMap<String, String>): Mono<DailyForecast16DaysResponseDTO>
+    fun currentWeather(parameters: MultiValueMap<String, String>): Mono<CurrentWeatherResponseDTO>
 }
