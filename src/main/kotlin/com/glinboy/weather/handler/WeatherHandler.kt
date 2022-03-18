@@ -11,4 +11,6 @@ import reactor.core.publisher.Mono
 class WeatherHandler(val weatherService: OpenWeatherMapService) {
     fun climaticForecast30DaysHandler(request: ServerRequest): Mono<ServerResponse> =
         ServerResponse.ok().body(weatherService.climaticForecast30Days(request.queryParams()))
+    fun historicalWeatherHandler(request: ServerRequest): Mono<ServerResponse> =
+        ServerResponse.ok().body(weatherService.historicalWeather(request.queryParams()))
 }
