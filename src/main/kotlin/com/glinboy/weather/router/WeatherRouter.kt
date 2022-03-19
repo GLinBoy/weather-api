@@ -10,4 +10,11 @@ import org.springframework.web.reactive.function.server.RouterFunctions
 import org.springframework.web.reactive.function.server.ServerResponse
 
 @Configuration(proxyBeanMethods = false)
-class WeatherRouter {}
+class WeatherRouter {
+    @Bean
+    fun weatherRoute(weatherHandler: WeatherHandler): RouterFunction<ServerResponse> =
+        RouterFunctions
+            .route(
+                RequestPredicates.GET("/weather/climate/month")
+                    .and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
+                weatherHandler::climaticForecast30DaysHandler)}}
