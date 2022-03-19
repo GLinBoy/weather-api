@@ -22,3 +22,7 @@ class WeatherRouter {
                 RequestPredicates.GET("/weather/onecall/timemachine")
                     .and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
                 weatherHandler::historicalWeatherHandler)
+            .andRoute(
+                RequestPredicates.GET("/weather/forecast")
+                    .and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
+                weatherHandler::forecast5Day3HourHandler)
