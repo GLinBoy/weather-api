@@ -34,3 +34,8 @@ class WeatherRouter {
                 RequestPredicates.GET("/weather/forecast/daily")
                     .and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
                 weatherHandler::dailyForecast16DaysHandler)
+            .andRoute(
+                RequestPredicates.GET("/weather")
+                    .and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
+                weatherHandler::currentWeatherHandler)
+}
