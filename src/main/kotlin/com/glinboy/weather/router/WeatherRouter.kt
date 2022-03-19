@@ -17,4 +17,8 @@ class WeatherRouter {
             .route(
                 RequestPredicates.GET("/weather/climate/month")
                     .and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
-                weatherHandler::climaticForecast30DaysHandler)}}
+                weatherHandler::climaticForecast30DaysHandler)
+            .andRoute(
+                RequestPredicates.GET("/weather/onecall/timemachine")
+                    .and(RequestPredicates.accept(MediaType.APPLICATION_JSON)),
+                weatherHandler::historicalWeatherHandler)
