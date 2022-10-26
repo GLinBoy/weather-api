@@ -11,5 +11,5 @@ import reactor.core.publisher.Mono
 class GreetingHandler {
     fun hello(request: ServerRequest): Mono<ServerResponse> =
         ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
-            .body(BodyInserters.fromValue("Hello Spring Reactive!!!"))
+            .body(BodyInserters.fromValue(mapOf(Pair("message", "Hello Spring Reactive!!!"))))
 }
