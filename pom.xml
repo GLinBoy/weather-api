@@ -16,8 +16,7 @@
     <properties>
         <java.version>24</java.version>
         <kotlin.version>2.2.21</kotlin.version>
-        <netty-resolver-dns.version>4.1.115.Final</netty-resolver-dns.version>
-        <editorconfig.version>0.1.3</editorconfig.version>
+        <editorconfig.version>0.2.0</editorconfig.version>
     </properties>
     <dependencies>
         <dependency>
