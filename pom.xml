@@ -14,7 +14,7 @@
     <name>weather-api</name>
     <description>weather-api</description>
     <properties>
-        <java.version>24</java.version>
+        <java.version>25</java.version>
         <kotlin.version>2.2.21</kotlin.version>
         <editorconfig.version>0.2.0</editorconfig.version>
     </properties>
